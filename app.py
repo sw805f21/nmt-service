@@ -8,6 +8,12 @@ def index():
 
 @app.route('/inference')
 def nmt():
+    # Add sentence for inference
+    sentence = request.args.get('sentence')
+    f = open("input.txt", "w+")
+    f.write(str(sentence))
+    f.close()
+
     # Run OpenNMT code
     script_descriptor = open("translate.py")
     a_script = script_descriptor.read()
